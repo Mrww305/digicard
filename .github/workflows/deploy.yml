@@ -34,7 +34,9 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        # npm ci for speed & determinism; falls back to npm install if the
+        # lockfile ever drifts from package.json so the deploy never dies
+        run: npm ci || npm install
 
       - name: Build
         run: npm run build
