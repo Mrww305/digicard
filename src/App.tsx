@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 import Header from "./components/Header";
@@ -20,7 +20,9 @@ import { initCosmos } from "./three/cosmos";
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
+  /* useLayoutEffect — runs before the first paint so the split-text
+     masking is in place before the hero is ever visible (no FOUC). */
+  useLayoutEffect(() => {
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;

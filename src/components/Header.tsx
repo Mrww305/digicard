@@ -40,7 +40,7 @@ export default function Header() {
 
       <div className="header-meta">
         <span className="dot" aria-hidden="true" />
-        <span>Open to alliances</span>
+        <span className="status-text">Open to alliances</span>
         <span className="clock" id="js-clock">--:--:-- GST</span>
       </div>
     </header>
