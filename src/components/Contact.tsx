@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 const LINKS = [
   {
     k: "Email",
@@ -37,20 +39,25 @@ export default function Contact() {
         </div>
 
         <div className="contact-grid">
-          <div data-reveal>
+          <div>
             <h3 className="contact-title">
-              Let&apos;s put talent
-              <br />
-              into <span className="serif">orbit.</span>
+              <span className="lm">
+                <span>Let&apos;s put talent</span>
+              </span>
+              <span className="lm" style={{ "--d": "0.12s" } as CSSProperties}>
+                <span>
+                  into <span className="serif">orbit.</span>
+                </span>
+              </span>
             </h3>
-            <p className="contact-note">
+            <p className="contact-note" data-reveal>
               Hiring an infrastructure leader, sponsoring a cohort, or you are a
               learner ready to launch — the channel is open and answered
               personally.
             </p>
           </div>
 
-          <div data-reveal style={{ "--d": "0.1s" } as React.CSSProperties}>
+          <div data-reveal style={{ "--d": "0.1s" } as CSSProperties}>
             <a className="mega" href="mailto:ceo@megnitoo.com">
               ceo<span className="serif">@</span>megnitoo.com
             </a>
@@ -61,12 +68,23 @@ export default function Contact() {
                   className="c-link"
                   key={l.k}
                   href={l.href}
-                  {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                  {...(l.external ? { target: "__blank", rel: "noreferrer" } : {})}
                 >
                   <span className="c-link__k">
                     {l.k}
-                    <svg className="c-link__arrow" width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-                      <path d="M1 10L10 1M10 1H2.5M10 1v7.5" stroke="currentColor" strokeWidth="1.2" />
+                    <svg
+                      className="c-link__arrow"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 11 11"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M1 10L10 1M10 1H2.5M10 1v7.5"
+                        stroke="currentColor"
+                        strokeWidth="1.2"
+                      />
                     </svg>
                   </span>
                   <span className="c-link__v">{l.v}</span>

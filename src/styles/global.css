@@ -1190,3 +1190,236 @@ html.rm .noise { animation: none !important; }
   .marquee__track { animation: none !important; }
   .noise { animation: none !important; }
 }
+
+/* ============================================================
+   14 · ENHANCEMENTS — mono data voice, serif surname,
+        orbit badge, telemetry bar, cursor, flight manual
+   ============================================================ */
+:root {
+  --mono: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/* ---------- mono data voice ---------- */
+.hero__eyebrow,
+.sec-head__index,
+.clock,
+.orbit-badge text,
+.manual__n {
+  font-family: var(--mono);
+}
+.hero__eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+}
+.sec-head__index {
+  letter-spacing: 0.2em;
+}
+.clock {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- hero title: tracked sans caps over serif italic ---------- */
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.3rem, 1.2vh, 0.9rem);
+  padding-left: 0;
+  letter-spacing: 0;
+}
+.title-line {
+  display: block;
+  line-height: 1.05;
+}
+.title-line--sans {
+  font-weight: 200;
+  text-transform: uppercase;
+  font-size: clamp(1.7rem, 5.4vw, 4.4rem);
+  letter-spacing: 0.46em;
+  padding-left: 0.46em; /* optically re-center tracked caps */
+  color: var(--ink-70);
+}
+.title-line--serif {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.015em;
+  font-size: clamp(3.2rem, 11.4vw, 8.8rem);
+  line-height: 1;
+  color: var(--ink);
+}
+.title-dot {
+  color: var(--ember);
+  margin-left: 0.03em;
+}
+
+/* ---------- orbit badge (rotating circular text) ---------- */
+.orbit-badge {
+  position: absolute;
+  right: clamp(1.2rem, 4.5vw, 3.4rem);
+  bottom: clamp(1.6rem, 5vh, 3rem);
+  width: 112px;
+  height: 112px;
+}
+.orbit-badge svg {
+  width: 100%;
+  height: 100%;
+  animation: spin 22s linear infinite;
+}
+.orbit-badge text {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  fill: var(--ink-45);
+}
+.orbit-badge .badge-ring {
+  stroke: var(--line);
+}
+.orbit-badge .badge-core {
+  fill: var(--ember);
+}
+@media (max-width: 860px) {
+  .orbit-badge { display: none; }
+}
+
+/* ---------- scroll telemetry bar ---------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 70;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--ember), rgba(226, 163, 60, 0.25));
+}
+
+/* ---------- custom cursor (fine pointers only, JS-gated) ---------- */
+.cursor-dot,
+.cursor-ring {
+  display: none;
+}
+html.has-cursor .cursor-dot,
+html.has-cursor .cursor-ring {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+html.has-cursor .cursor-dot {
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: var(--ember);
+}
+html.has-cursor .cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+}
+.cursor-ring i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 232, 232, 0.32);
+  transition: transform 0.4s var(--ease), border-color 0.4s ease;
+}
+.cursor-ring.is-active i {
+  transform: scale(1.6);
+  border-color: rgba(226, 163, 60, 0.75);
+}
+
+/* ---------- line-mask reveal tuning (descender safe) ---------- */
+.lm {
+  padding-block: 0.12em;
+  margin-block: -0.06em;
+}
+
+/* ---------- flight manual (operating doctrine) ---------- */
+.manual-head {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: clamp(3.4rem, 8vh, 5.6rem);
+}
+.manual-head .eyebrow {
+  white-space: nowrap;
+}
+.manual-head .rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.manual-head .manual-count {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-45);
+  white-space: nowrap;
+}
+.manual {
+  margin-top: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+.manual__item {
+  padding: 1.9rem clamp(1rem, 2.2vw, 2.2rem) 0.6rem 0.4rem;
+  border-left: 1px solid var(--line);
+  transition:
+    background 0.5s ease 0s,
+    opacity 1s var(--ease) var(--d, 0s),
+    transform 1s var(--ease) var(--d, 0s);
+}
+.manual__item:first-child {
+  border-left: none;
+}
+.manual__item:hover {
+  background: rgba(226, 163, 60, 0.04);
+}
+.manual__n {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--ember);
+}
+.manual__t {
+  margin-top: 1rem;
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.manual__t .serif {
+  color: var(--ember);
+  font-size: 1.12em;
+}
+.manual__d {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--ink-45);
+  line-height: 1.95;
+  max-width: 36ch;
+}
+@media (max-width: 1000px) {
+  .manual { grid-template-columns: 1fr; }
+  .manual__item { border-left: none; }
+  .manual__item + .manual__item { border-top: 1px solid var(--line); }
+}
+
+/* ---------- reduced motion: kill the new spinners ---------- */
+html.rm .orbit-badge svg { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-badge svg { animation: none !important; }
+}

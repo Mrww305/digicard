@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 const FACTS = [
   { k: "Base", v: "United Arab Emirates" },
   { k: "Focus", v: "AI Platforms & Infra" },
@@ -11,7 +13,7 @@ export default function Profile() {
   return (
     <section className="section" id="profile">
       <div className="wrap">
-        <div className="sec-head" data-reveal-group>
+        <div className="sec-head">
           <span className="sec-head__index" data-scramble data-text="01 / PROFILE">
             01 / PROFILE
           </span>
@@ -21,12 +23,19 @@ export default function Profile() {
         </div>
 
         <div className="cols">
-          <div className="cols__left" data-reveal>
-            <p className="profile-kicker">Who is in the cockpit</p>
+          <div className="cols__left">
+            <p className="profile-kicker" data-reveal>
+              Who is in the cockpit
+            </p>
             <h3 className="profile-heading">
-              Engineer first.
-              <br />
-              <span className="serif">Builder</span> of gravity.
+              <span className="lm">
+                <span>Engineer first.</span>
+              </span>
+              <span className="lm" style={{ "--d": "0.12s" } as CSSProperties}>
+                <span>
+                  <span className="serif">Builder</span> of gravity.
+                </span>
+              </span>
             </h3>
           </div>
 
@@ -39,7 +48,7 @@ export default function Profile() {
               production: GPU clusters, Kubernetes estates, MLOps pipelines, and
               the observability that holds them accountable.
             </p>
-            <p data-reveal style={{ "--d": "0.08s" } as React.CSSProperties}>
+            <p data-reveal style={{ "--d": "0.08s" } as CSSProperties}>
               In 2023 I stopped asking who would give opportunity to people like
               the younger me — and built the machine myself.{" "}
               <strong>MegniToo</strong> is an incubator for underprivileged youth:
@@ -47,14 +56,18 @@ export default function Profile() {
               engine, and a community that answers at 2 a.m.
             </p>
 
-            <blockquote className="pull-quote" data-reveal style={{ "--d": "0.12s" } as React.CSSProperties}>
+            <blockquote
+              className="pull-quote"
+              data-reveal
+              style={{ "--d": "0.12s" } as CSSProperties}
+            >
               Talent is universal.
               <br />
               Opportunity is not.
               <footer>— the thesis behind MegniToo</footer>
             </blockquote>
 
-            <p data-reveal style={{ "--d": "0.1s" } as React.CSSProperties}>
+            <p data-reveal style={{ "--d": "0.1s" } as CSSProperties}>
               My work sits where <strong>heavy infrastructure</strong> meets{" "}
               <strong>human trajectories</strong>: architect the platform by day,
               then open the airlock so the next engineer can step through. That
@@ -62,7 +75,11 @@ export default function Profile() {
               on.
             </p>
 
-            <div className="fact-list" data-reveal style={{ "--d": "0.14s" } as React.CSSProperties}>
+            <div
+              className="fact-list"
+              data-reveal
+              style={{ "--d": "0.14s" } as CSSProperties}
+            >
               {FACTS.map((f) => (
                 <div className="fact" key={f.k}>
                   <span className="fact__k">{f.k}</span>

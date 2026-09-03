@@ -11,6 +11,7 @@ import Capabilities from "./components/Capabilities";
 import Signals from "./components/Signals";
 import Contact from "./components/Contact";
 
+import { Cursor, Progress } from "./components/Chrome";
 import { initVh } from "./lib/vh";
 import { splitChars } from "./lib/split";
 import { scrambleIn } from "./lib/scramble";
@@ -35,9 +36,11 @@ export default function App() {
 
     /* 3 · GSAP split-text blur-to-focus entrance for #home-hero-title */
     let ctx: gsap.Context | null = null;
-    const title = document.getElementById("home-hero-title");
-    if (title) {
-      const chars = splitChars(title);
+    const chars: HTMLElement[] = [];
+    document.querySelectorAll<HTMLElement>("[data-split]").forEach((node) => {
+      chars.push(...splitChars(node));
+    });
+    if (chars.length) {
       if (!reduced) {
         ctx = gsap.context(() => {
           const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
@@ -59,7 +62,12 @@ export default function App() {
               { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.11 },
               1.3
             )
-            .to(".hero__cue", { autoAlpha: 1, y: 0, duration: 0.9 }, 1.6);
+            .to(".hero__cue", { autoAlpha: 1, y: 0, duration: 0.9 }, 1.6)
+            .to(
+              ".title-dot, .orbit-badge",
+              { autoAlpha: 1, y: 0, duration: 0.9 },
+              1.5
+            );
         });
       }
     }
@@ -103,7 +111,7 @@ export default function App() {
       { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
     );
     document
-      .querySelectorAll("[data-reveal], .sec-head, [data-scramble], [data-count]")
+      .querySelectorAll("[data-reveal], .sec-head, .lm, [data-scramble], [data-count]")
       .forEach((el) => io.observe(el));
 
     /* 6 · live clock — Asia/Dubai */
@@ -157,6 +165,7 @@ export default function App() {
       {/* z:1 — interactive WebGL background layer */}
       <canvas ref={canvasRef} className="use-webgl" aria-hidden="true" />
       <div className="vignette" aria-hidden="true" />
+      <Progress />
 
       {/* z:3 — HTML typography / content layer */}
       <div className="content">
@@ -172,6 +181,8 @@ export default function App() {
           <Contact />
         </main>
       </div>
+
+      <Cursor />
 
       {/* z:80 — film grain */}
       <div className="noise" aria-hidden="true" />
