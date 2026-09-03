@@ -541,6 +541,17 @@ ol {
   font-size: 1rem;
   letter-spacing: 0;
 }
+.marquee__star {
+  display: inline-flex;
+  color: var(--ember);
+  transform: translateY(-0.5px);
+}
+.marquee__spark {
+  animation: spark-spin 6s linear infinite;
+}
+@keyframes spark-spin {
+  to { transform: rotate(360deg); }
+}
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
@@ -1141,6 +1152,10 @@ ol {
   .contact-grid { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 560px) {
+  .header-meta .status-text { display: none; }
+}
+
 @media (max-width: 640px) {
   .row { grid-template-columns: 1fr; gap: 0.5rem; }
   .row__desc { grid-column: 1 / -1; margin-top: 0.2rem; }
@@ -1165,6 +1180,7 @@ html.rm .lm > span { transform: none !important; }
 html.rm .hero__cue { transform: translateX(-50%) !important; }
 html.rm .sec-head__rule { transform: scaleX(1) !important; }
 html.rm .marquee__track { animation: none !important; }
+html.rm .marquee__spark { animation: none !important; }
 html.rm .noise { animation: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1188,6 +1204,7 @@ html.rm .noise { animation: none !important; }
   .hero__cue { transform: translateX(-50%) !important; }
   .sec-head__rule { transform: scaleX(1) !important; }
   .marquee__track { animation: none !important; }
+  .marquee__spark { animation: none !important; }
   .noise { animation: none !important; }
 }
 
