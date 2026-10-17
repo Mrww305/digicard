@@ -1,0 +1,29 @@
+# Sajid Afridi — Founder · MegniToo
+
+> Digital CV of Sajid Afridi — Senior AI Platform & Infrastructure Engineer and founder of MegniToo, an incubator pulling underprivileged youth into orbit around AI.
+
+## Author
+
+- Name: Sajid Afridi
+- Handle: mrww305
+- Role: AI Governance Architect, MLOps & Zero Trust Architect
+- Canonical profile: https://sajidafridi.com
+- This site: https://digicard.sajidafridi.com/
+
+## Identity
+
+- LinkedIn: https://www.linkedin.com/in/mr305afridi
+- GitHub: https://github.com/Mrww305
+- Kaggle: https://www.kaggle.com/mrww305
+- MegniToo: https://megnitoo.com
+- Pakistan Red Team: https://pakistanredteam.com
+- AIPakistani: https://aipakistani.com
+
+## Portfolio
+
+- Deep Space CV: https://sajidafridi.com
+- About: https://sajidafridi.com/about/
+- Experience: https://sajidafridi.com/experience/
+- Projects: https://sajidafridi.com/projects/
+- Live lab: https://sajidafridi.com/lab/
+- Contact: https://sajidafridi.com/contact/
